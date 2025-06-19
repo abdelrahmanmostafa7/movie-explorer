@@ -1,20 +1,20 @@
 Before I start Create or implement any line of code should plan and thinking about how to do this so let's create a plan for this and what is tec I will choose and why to make it clearly and easy to do it
 
 ## Installation
-- Setup Next.js (App Router) with TypeScript
-- Install Tailwind CSS
-- Initialize Git repo
-- Setup environment variables
-- Install Axios, Zustand, Clerk, TMDb API, etc.
+- Setup Next.js (App Router) with TypeScript ✔
+- Install Tailwind CSS✔
+- Initialize Git repo✔
+- Setup environment variables✔
+- Install Axios, Zustand, Clerk✔, TMDb API, etc.
 
 ## UI Implementation
 
 **Home Page**
 *Navbar* it will show in all pages so we will put it in layout
-  - Logo (link to home)
-  - Nav Items → Home / Favorites / About
-  - Sign In / Sign Up button (Clerk)
-  ## Authentication (Clerk)
+  - Logo (link to home)✔
+  - Nav Items → Home / Favorites / About✔
+  - Sign In / Sign Up button (Clerk)✔
+  ## Authentication (Clerk)✔
   - install clerk packages
   - create new project in clerk dashboard → select ways to auth
   - create env file and Set your Clerk API keys
@@ -26,20 +26,28 @@ Before I start Create or implement any line of code should plan and thinking abo
   Sign up, login, logout using JWT (access & refresh tokens) && Secure storage using encrypted IndexedDB (fallback to localStorage) 
   so when save user data like Favorite movies will	Save them in Zustand + encrypted IndexedDB or localStorage)
   
-*About Page* it just some info about app 
+*About Page* it just some info about app ✔
 
-*Top Pages* 
+*Top Pages* ✔
 - [genre] is a placeholder for value in the URL
-- Top Rated or Pupilar  movie 
+- Top Rated or Pupilar  movie
 
-*SearchBar* (with autocomplete)
-
+## Data Fetching (Axios)
+- Get Trending Movies (Home Page)
+- so we will create Card compo & Result compo to show our Cards  
+- Get Movie Details (by ID)
+- Search Movies
+- Get Similar Movies, Cast, Reviews
 *MovieCard Component*
   - Poster
   - Title
   - Rating
   - Add/Remove Favorite button
   - Link to Movie Detail Page
+
+*SearchBar* (with autocomplete)
+
+
 
 **Movie Detail Page**
 - Embedded Trailer (YouTube)
@@ -65,11 +73,6 @@ Before I start Create or implement any line of code should plan and thinking abo
 - Store favorites in Zustand
 - Sync Zustand state with localStorage/IndexedDB (encrypted)
 
-## Data Fetching (Axios)
-- Get Trending Movies (Home Page)
-- Get Movie Details (by ID)
-- Search Movies
-- Get Similar Movies, Cast, Reviews
 
 ## Security
 - Use HTTPS headers in `next.config.js`
