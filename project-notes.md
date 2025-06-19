@@ -20,8 +20,13 @@ Before I start Create or implement any line of code should plan and thinking abo
   - create env file and Set your Clerk API keys
   - create middleware
   - Add ClerkProvider to your app in layout
-  - Sync Clerk user with MongoDB
-  - Secure access to user-specific data
+  
+  (Sync Clerk user with MongoDB (will change this way because did not explicitly say “sync Clerk data    withMongoDB” in the project PDF)
+  What Did They Actually Ask???
+  Sign up, login, logout using JWT (access & refresh tokens) && Secure storage using encrypted IndexedDB (fallback to localStorage) 
+  so when save user data like Favorite movies will	Save them in Zustand + encrypted IndexedDB or localStorage)
+  
+*About Page* it just some info about app 
 
 *SearchBar* (with autocomplete)
 *TrendBar*   Top Rated or Pupilar  movie 
