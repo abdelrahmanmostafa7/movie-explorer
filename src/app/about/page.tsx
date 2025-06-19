@@ -6,7 +6,7 @@ const Page = () => {
           <h1 className="text-3xl font-semibold text-center my-3">
             About <span className="text-red-500">IMDb</span> Clone
           </h1>
-          <div className="text-md text-gray-500 flex flex-col gap-6">
+          <div className="text-md text-gray-300 flex flex-col gap-6">
             <p>
               Welcome to IMDB Clone! This app is designed to provide users with
               a comprehensive database of movies, TV shows, and entertainment

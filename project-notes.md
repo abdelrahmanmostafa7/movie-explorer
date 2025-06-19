@@ -28,8 +28,11 @@ Before I start Create or implement any line of code should plan and thinking abo
   
 *About Page* it just some info about app 
 
+*Top Pages* 
+- [genre] is a placeholder for value in the URL
+- Top Rated or Pupilar  movie 
+
 *SearchBar* (with autocomplete)
-*TrendBar*   Top Rated or Pupilar  movie 
 
 *MovieCard Component*
   - Poster

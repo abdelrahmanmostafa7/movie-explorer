@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+import TopBar from "./TopBar";
 
 const Navbar = () => {
   return (
@@ -11,6 +12,9 @@ const Navbar = () => {
           </span>
           <span className="text-xl hidden sm:inline">Clone</span>
         </Link>
+      </div>
+      <div className="flex items-center">
+        <TopBar />
       </div>
       <ul className="flex gap-4">
         <li className="hidden sm:block">
