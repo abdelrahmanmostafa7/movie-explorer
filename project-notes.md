@@ -14,6 +14,14 @@ Before I start Create or implement any line of code should plan and thinking abo
   - Logo (link to home)
   - Nav Items → Home / Favorites / About
   - Sign In / Sign Up button (Clerk)
+  ## Authentication (Clerk)
+  - install clerk packages
+  - create new project in clerk dashboard → select ways to auth
+  - create env file and Set your Clerk API keys
+  - create middleware
+  - Add ClerkProvider to your app in layout
+  - Sync Clerk user with MongoDB
+  - Secure access to user-specific data
 
 *SearchBar* (with autocomplete)
 *TrendBar*   Top Rated or Pupilar  movie 
@@ -43,10 +51,7 @@ Before I start Create or implement any line of code should plan and thinking abo
 - Autocomplete suggestions
 - Filter by genre, rating, etc.
 
-## Authentication (Clerk)
-- Sign in / Sign up / Sign out
-- Sync Clerk user with MongoDB
-- Secure access to user-specific data
+
 
 ## State Management (Zustand)
 - Store favorites in Zustand

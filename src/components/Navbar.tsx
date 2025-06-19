@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+
 const Navbar = () => {
   return (
     <div className="flex justify-between items-center p-3 max-w-6xl mx-auto">
@@ -20,15 +22,20 @@ const Navbar = () => {
         <li className="hidden sm:block">
           <Link href={"/about"}>About</Link>
         </li>
-        <li className="">
-          <Link href={"/signup"}>Sign Up</Link>
-        </li>
-        <li className="">
-          <Link href={"/signin"}>Sign In</Link>
-        </li>
+        <SignedOut>
+          <SignInButton mode="modal">
+            <button className=" cursor-pointer   ">
+              SignIn
+            </button>
+          </SignInButton>
+        </SignedOut>
+
+        <SignedIn>
+          <UserButton afterSignOutUrl="/" />
+        </SignedIn>
       </ul>
     </div>
   );
-}
+};
 
-export default Navbar
+export default Navbar;
