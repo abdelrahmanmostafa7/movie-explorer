@@ -10,11 +10,13 @@ Before I start Create or implement any line of code should plan and thinking abo
 ## UI Implementation
 
 **Home Page**
-*Navbar*
+*Navbar* it will show in all pages so we will put it in layout
   - Logo (link to home)
-  - Search bar (with autocomplete)
   - Nav Items → Home / Favorites / About
   - Sign In / Sign Up button (Clerk)
+
+*SearchBar* (with autocomplete)
+*TrendBar*   Top Rated or Pupilar  movie 
 
 *MovieCard Component*
   - Poster
