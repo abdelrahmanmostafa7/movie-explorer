@@ -1,4 +1,4 @@
-// Results.tsx
+
 import Card from "./Card";
 import { Result } from "../types/types"; 
 

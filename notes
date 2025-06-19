@@ -32,8 +32,8 @@ Before I start Create or implement any line of code should plan and thinking abo
 - [genre] is a placeholder for value in the URL
 - Top Rated or Pupilar  movie
 
-## Data Fetching (Axios)
-- Get Trending Movies (Home Page)
+## Data Fetching (Axios)✔
+- Get Trending Movies (Home Page)✔
 - so we will create Card compo & Result compo to show our Cards  
 - Get Movie Details (by ID)
 - Search Movies
