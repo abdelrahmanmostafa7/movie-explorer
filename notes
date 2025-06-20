@@ -53,10 +53,17 @@ Before I start Create or implement any line of code should plan and thinking abo
 
 *SearchBar* (with autocomplete)
 ## Search & Filter
-- Search with TMDb API
-- Fuzzy Search using Fuse.js
-- Autocomplete suggestions
-- Filter by genre, rating, etc.
+- Fuzzy search using TMDb API (server-side filtering)
+- Real-time autocomplete suggestions while typing
+- Show full search results page
+- Support pagination using page param from TMDb API
+- Navigate between pages using Next/Prev buttons
+
+*If I have time Advanced (Optional)
+- Fuzzy search using Fuse.js (client-side)
+- Combine client-side and server-side filtering for better accuracy
+
+
 
 
 **Favorites Page**

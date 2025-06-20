@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { ClerkProvider } from "@clerk/nextjs";
+import SearchBar from "@/components/SearchBar";
 // import TopBar from "@/components/TopBar";
 
 const geistSans = Geist({
@@ -34,6 +35,7 @@ export default function RootLayout({
         >
           {/*It will be displayed on every page. */}
           <Navbar /> 
+          <SearchBar />
           {/* <TopBar /> */}
           {children}
         </body>
