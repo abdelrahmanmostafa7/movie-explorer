@@ -52,16 +52,6 @@ Before I start Create or implement any line of code should plan and thinking abo
 - Similar Movies Section
 
 *SearchBar* (with autocomplete)
-
-
-
-
-**Favorites Page**
-- Show user’s favorite movie cards
-- Requires user to be authenticated
-- Favorite button should be active (different color or icon)
-- Protect the route using middleware / Clerk
-
 ## Search & Filter
 - Search with TMDb API
 - Fuzzy Search using Fuse.js
@@ -69,6 +59,11 @@ Before I start Create or implement any line of code should plan and thinking abo
 - Filter by genre, rating, etc.
 
 
+**Favorites Page**
+- Show user’s favorite movie cards
+- Requires user to be authenticated
+- Favorite button should be active (different color or icon)
+- Protect the route using middleware / Clerk
 
 ## State Management (Zustand)
 - Store favorites in Zustand
