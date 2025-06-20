@@ -34,26 +34,27 @@ Before I start Create or implement any line of code should plan and thinking abo
 
 ## Data Fetching (Axios)✔
 - Get Trending Movies (Home Page)✔
-- so we will create Card compo & Result compo to show our Cards  
+- so we will create Card compo & Result compo to show our Cards  ✔
 - Get Movie Details (by ID)
 - Search Movies
 - Get Similar Movies, Cast, Reviews
-*MovieCard Component*
+*MovieCard Component*✔
   - Poster
   - Title
   - Rating
   - Add/Remove Favorite button
   - Link to Movie Detail Page
 
-*SearchBar* (with autocomplete)
-
-
-
 **Movie Detail Page**
 - Embedded Trailer (YouTube)
 - Cast List (actors, roles)
 - Reviews Section
 - Similar Movies Section
+
+*SearchBar* (with autocomplete)
+
+
+
 
 **Favorites Page**
 - Show user’s favorite movie cards
