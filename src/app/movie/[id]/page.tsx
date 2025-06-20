@@ -6,13 +6,13 @@ import { Movie, Video, CastMember, Review, SimilarMovie } from "@/types/types";
 
 const API_KEY = process.env.API_KEY;
 // عملتها هنا عشان وانا بجرب docker مطلع فيها مشكلة
-interface PageProps {
+type Props = {
   params: {
     id: string;
   };
-}
+};
 
-export default async function MovieDetailPage({ params }: PageProps) {
+export default async function MovieDetailPage({ params }: Props) {
   const movieId = params.id;
 
   const [movieRes, videosRes, creditsRes, reviewsRes, similarRes] =
