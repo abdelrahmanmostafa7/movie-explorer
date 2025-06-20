@@ -2,13 +2,28 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Result } from "../types/types";
+import { Movie } from "../types/types";
 
+import { useFavoriteStore } from "@/store/favoriteStore";
 type Props = {
-  result: Result;
+  result: Movie;
 };
 
 export default function MovieCard({ result }: Props) {
+  // نفس الفكرة اللى طبقتها ف ال store هاجى هنا اشوف هى ف fav ولى لا
+  const { favorites, addFavorite, removeFavorite } = useFavoriteStore();
+  const movieId = Number(result.id);
+  const isFav = favorites.includes(movieId);
+
+  const toggle = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (isFav) {
+      removeFavorite(movieId);
+    } else {
+      addFavorite(movieId);
+    }
+  };
+
   return (
     <div className="group cursor-pointer sm:hover:shadow-slate-400 sm:shadow-md rounded-lg sm:border sm:border-slate-400 sm:m-2 transition-shadow duration-200 overflow-hidden">
       <Link href={`/movie/${result.id}`}>
@@ -36,8 +51,8 @@ export default function MovieCard({ result }: Props) {
 
           <div className="flex items-center justify-between text-xs text-gray-600 dark:text-gray-300">
             <span>⭐ {result.vote_average?.toFixed(1) ?? "Not Available"}</span>
-            <button className="hover:bg-red-600 text-white border-2 border-white p-1 rounded-md transition-colors duration-200 cursor-pointer">
-              Add To Fav
+            <button onClick={toggle} className="text-xl cursor-pointer">
+              {isFav ? "❤️" : "🤍"}
             </button>
           </div>
         </div>

@@ -1,6 +1,7 @@
 Before I start Create or implement any line of code should plan and thinking about how to do this so let's create a plan for this and what is tec I will choose and why to make it clearly and easy to do it
 
 ## Installation
+
 - Setup Next.js (App Router) with TypeScript ✔
 - Install Tailwind CSS✔
 - Initialize Git repo✔
@@ -10,35 +11,40 @@ Before I start Create or implement any line of code should plan and thinking abo
 ## UI Implementation
 
 **Home Page**
-*Navbar* it will show in all pages so we will put it in layout
-  - Logo (link to home)✔
-  - Nav Items → Home / Favorites / About✔
-  - Sign In / Sign Up button (Clerk)✔
-  ## Authentication (Clerk)✔
-  - install clerk packages
-  - create new project in clerk dashboard → select ways to auth
-  - create env file and Set your Clerk API keys
-  - create middleware
-  - Add ClerkProvider to your app in layout
-  
-  (Sync Clerk user with MongoDB (will change this way because did not explicitly say “sync Clerk data    withMongoDB” in the project PDF)
-  What Did They Actually Ask???
-  Sign up, login, logout using JWT (access & refresh tokens) && Secure storage using encrypted IndexedDB (fallback to localStorage) 
-  so when save user data like Favorite movies will	Save them in Zustand + encrypted IndexedDB or localStorage)
-  
-*About Page* it just some info about app ✔
+_Navbar_ it will show in all pages so we will put it in layout
 
-*Top Pages* ✔
+- Logo (link to home)✔
+- Nav Items → Home / Favorites / About✔
+- Sign In / Sign Up button (Clerk)✔
+
+## Authentication (Clerk)✔
+
+- install clerk packages
+- create new project in clerk dashboard → select ways to auth
+- create env file and Set your Clerk API keys
+- create middleware
+- Add ClerkProvider to your app in layout
+
+(Sync Clerk user with MongoDB (will change this way because did not explicitly say “sync Clerk data withMongoDB” in the project PDF)
+What Did They Actually Ask???
+Sign up, login, logout using JWT (access & refresh tokens) && Secure storage using encrypted IndexedDB (fallback to localStorage)
+so when save user data like Favorite movies will Save them in Zustand + encrypted IndexedDB or localStorage)
+
+_About Page_ it just some info about app ✔
+
+_Top Pages_ ✔
+
 - [genre] is a placeholder for value in the URL
-- Top Rated or Pupilar  movie
+- Top Rated or Pupilar movie
 
 ## Data Fetching (Axios)✔
+
 - Get Trending Movies (Home Page)✔
-- so we will create Card compo & Result compo to show our Cards  ✔
+- so we will create Card compo & Result compo to show our Cards ✔
 - Get Movie Details (by ID)
 - Search Movies
 - Get Similar Movies, Cast, Reviews
-*MovieCard Component*✔
+  *MovieCard Component*✔
   - Poster
   - Title
   - Rating
@@ -46,49 +52,64 @@ Before I start Create or implement any line of code should plan and thinking abo
   - Link to Movie Detail Page
 
 **Movie Detail Page**
+
 - Embedded Trailer (YouTube)
 - Cast List (actors, roles)
 - Reviews Section
 - Similar Movies Section
 
-*SearchBar* (with autocomplete)
+_SearchBar_ (with autocomplete)
+
 ## Search & Filter
+
 - Fuzzy search using TMDb API (server-side filtering)
 - Real-time autocomplete suggestions while typing
 - Show full search results page
 - Support pagination using page param from TMDb API
 - Navigate between pages using Next/Prev buttons
 
-*If I have time Advanced (Optional)
+\*If I have time Advanced (Optional)
+
 - Fuzzy search using Fuse.js (client-side)
 - Combine client-side and server-side filtering for better accuracy
 
-
-
-
 **Favorites Page**
+
 - Show user’s favorite movie cards
 - Requires user to be authenticated
 - Favorite button should be active (different color or icon)
 - Protect the route using middleware / Clerk
 
 ## State Management (Zustand)
+
 - Store favorites in Zustand
 - Sync Zustand state with localStorage/IndexedDB (encrypted)
 
+\*\* Steps for create FavBtn
+
+-  install zustand zustand/middleware idb-keyval crypto-js
+- we create Create Encryption Utility , Secure IndexedDB Wrapper ( we create indexDB to be more secure also create local to be primary solution)
+- Then Integrate with Zustand to secure storage and handle global state
+- add fav btn to card movie
+- Create favorites/page.tsx for server component to protect the route using Clerk and render ClientFavorites if authenticated.
+- Create favorites/ClientFavorites.tsx as a client component to fetch and display favorite movies from Zustand store using TMDb API.
+- then handle clark middleware
 
 ## Security
+
 - Use HTTPS headers in `next.config.js`
 - Encrypt favorites data in browser (Base64/custom logic)
 - Use Clerk JWT (stateless auth)
 - Helmet or custom headers for security
 
 ## Deployment & Scalability
+
 - Dockerfile + Docker Compose
 - Use Vercel or VPS with CDN (Cloudflare)
 - Explain scalability strategy in README
 
 ## SEO & Performance
+
 - Use `<Image />` for optimization
 - Metadata: title, description, OG tags
 - Lazy load trailers and secondary content
@@ -97,6 +118,7 @@ Before I start Create or implement any line of code should plan and thinking abo
 **Weather API** (Optional – if time allows)
 
 ## README Checklist
+
 - Project Description
 - Features
 - Tech Stack
@@ -106,40 +128,40 @@ Before I start Create or implement any line of code should plan and thinking abo
 - SEO, Performance
 - Live Demo + Screenshots
 
-
 ## Why These Tools Were Chosen
 
 **Zustand (State Management)**
+
 - I chose Zustand instead of Redux Toolkit because:
   - It's lightweight and has no boilerplate.
   - Easier to integrate with Next.js, especially App Router.
   - Ideal for simple state management like auth or favorites.
   - Redux Toolkit is better for complex, enterprise-level apps.
 
-
 **Axios (Data Fetching)**
+
 - I chose Axios instead of React Query because:
   - It's simple and gives full control over HTTP requests.
   - The video tutorial is based on Axios, so it aligns with the implementation.
   - React Query is great for caching and advanced scenarios, but not needed here.
 
-
 **Fuse.js (Search & Filtering)**
+
 - I used Fuse.js instead of server-side filtering because:
   - It allows fuzzy client-side search without creating a custom backend.
   - Fast and easy to implement in the search bar.
   - The movie dataset is relatively small, so client-side filtering is enough.
   - Server-side filtering makes more sense for massive datasets.
 
-
 **Static Generation (SSG) for Home Page**
+
 - I chose SSG instead of SSR for the homepage because:
   - The trending/popular movie data doesn't change frequently.
   - SSG ensures faster performance and better SEO.
   - No authentication needed for this page, so static rendering fits best.
 
-
 **Clerk (Authentication)**
+
 - I used Clerk instead of building JWT manually because:
   - Clerk provides a secure and production-ready auth system.
   - It supports Social Logins, Refresh Tokens, and easy integration with MongoDB.
@@ -149,9 +171,9 @@ Before I start Create or implement any line of code should plan and thinking abo
 ---
 
 **Zustand + Encrypted Storage**
+
 - I used Zustand with encrypted localStorage (or IndexedDB) to store favorites because:
   - It's a quick, offline-friendly solution.
   - Works well for storing non-sensitive preferences.
   - Encryption (e.g., with Base64 or CryptoJS) adds an extra security layer.
   - No need for a remote DB unless you want cross-device sync.
-
