@@ -11,9 +11,10 @@ export type Result = {
   vote_average?: number;
 };
 
-
 export type Props = {
-  params: { id: string };
+  params: {
+    id: string;
+  };
 };
 
 export type Movie = {

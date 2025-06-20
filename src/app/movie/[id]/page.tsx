@@ -2,18 +2,17 @@ import React from "react";
 import axios from "axios";
 import Link from "next/link";
 import Image from "next/image";
-import {
-    Props,
-    Movie,
-    Video,
-    CastMember,
-    Review,
-    SimilarMovie,
-  } from "@/types/types";
+import { Movie, Video, CastMember, Review, SimilarMovie } from "@/types/types";
+
 const API_KEY = process.env.API_KEY;
+// عملتها هنا عشان وانا بجرب docker مطلع فيها مشكلة
+interface PageProps {
+  params: {
+    id: string;
+  };
+}
 
-
-export default async function MovieDetailPage({ params }: Props) {
+export default async function MovieDetailPage({ params }: PageProps) {
   const movieId = params.id;
 
   const [movieRes, videosRes, creditsRes, reviewsRes, similarRes] =
