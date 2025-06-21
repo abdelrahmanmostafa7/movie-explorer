@@ -1,5 +1,6 @@
 import { fetchMovies } from "@/lib/fetchMovies";
 import Results from "@/components/Results";
+import SearchBar from "@/components/SearchBar";
 
 const API_KEY = process.env.API_KEY!;
 
@@ -17,6 +18,7 @@ export default async function Home({ params }: Props) {
 
     return (
       <>
+        <SearchBar />
         <h1 className="text-3xl font-bold text-center my-6">
           Hot New Releases: Must-See Movies & Shows for 2024–2025
         </h1>

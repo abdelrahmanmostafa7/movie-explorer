@@ -14,7 +14,6 @@ export default function SearchBar() {
   );
   
   const router = useRouter();
-  // فى مشكلة ظهرت معايا وهى ان ان لما يظهر الاقتاراحات ف السيرش لما اجرب اجوش ف اى حتة مش بتختفى ف هنجرب نشتغل ع focus 
   const [showSuggestions, setShowSuggestions] = useState(false);
 
 
@@ -23,7 +22,6 @@ export default function SearchBar() {
     const value = e.target.value;
     setQuery(value);
 
-    // Debounce late API 500ms عشان اليوزر لو بيكتب بسرعة و يمنع كثرة الـ API calls
     if (debounceTimer) clearTimeout(debounceTimer);
     const timer = setTimeout(() => {
       fetchSuggestions(value);
@@ -31,15 +29,12 @@ export default function SearchBar() {
     setDebounceTimer(timer);
   };
 
-  // برضو فحالة ان اليوزر مبعتش حاجة في الـ input 
   const fetchSuggestions = async (searchText: string) => {
-    // ممكن شيل المسافات عشان تسهل عملية السيرش 
     if (!searchText.trim()) {
       setSuggestions([]);
       return;
     }
 
-    // بعد كدا ه get request 
     try {
       const response = await apiClient.get("/search/movie", {
         params: {
@@ -53,7 +48,6 @@ export default function SearchBar() {
     }
   };
 
-  // لما اليوزر يضغط على زرار البحث
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (query.trim()) {

@@ -18,7 +18,7 @@ const nextConfig = {
           },
           {
             key: "Referrer-Policy",
-            value: "no-referrer",
+            value: "strict-origin-when-cross-origin",
           },
           {
             key: "X-XSS-Protection",
@@ -30,7 +30,13 @@ const nextConfig = {
           },
           {
             key: "Permissions-Policy",
-            value: "geolocation=(), microphone=()",
+            value:
+              "geolocation=(), microphone=(), camera=(), fullscreen=*, autoplay=*",
+          },
+          {
+            key: "Content-Security-Policy",
+            value:
+              "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; img-src 'self' https://image.tmdb.org data:; style-src 'self' 'unsafe-inline'; font-src 'self' fonts.googleapis.com fonts.gstatic.com;",
           },
         ],
       },

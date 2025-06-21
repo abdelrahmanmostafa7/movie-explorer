@@ -1,19 +1,23 @@
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { ClerkProvider } from "@clerk/nextjs";
-import SearchBar from "@/components/SearchBar";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
 });
+
 
 export const metadata: Metadata = {
   title: "Movie Explorer",
@@ -33,11 +37,11 @@ export const metadata: Metadata = {
     title: "Movie Explorer",
     description:
       "Discover trending and top-rated movies with trailers and cast info.",
-    url: "https://your-site-url.com", // حط هنا لينك  بعد ما ارفعه
+    url: "https://movie-explorer-smoky-pi.vercel.app/",
     siteName: "Movie Explorer",
     images: [
       {
-        url: "https://miro.medium.com/v2/resize:fit:512/1*UaUZmFbQmQ4ZstvGQ-JFeA.png", 
+        url: "https://miro.medium.com/v2/resize:fit:512/1*UaUZmFbQmQ4ZstvGQ-JFeA.png",
         width: 1200,
         height: 630,
         alt: "Movie Explorer App",
@@ -46,22 +50,19 @@ export const metadata: Metadata = {
     locale: "en_US",
     type: "website",
   },
+  metadataBase: new URL("https://movie-explorer-smoky-pi.vercel.app/"), 
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    // Wrap out app with ClerkProvider to enable authentication features
     <ClerkProvider>
-      <html lang="en">
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        >
-          <Navbar /> 
-          <SearchBar />
+      <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+        <body className="antialiased bg-background text-foreground">
+          <Navbar />
           {children}
         </body>
       </html>
