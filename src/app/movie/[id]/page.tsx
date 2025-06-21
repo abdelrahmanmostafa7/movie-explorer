@@ -54,8 +54,7 @@ export default async function MovieDetailPage({ params }: PageProps) {
             allow="autoplay; encrypted-media"
             allowFullScreen
             className="w-full h-full rounded-lg"
-            // loading="lazy"
-            loading="eager"
+            loading="lazy"
           ></iframe>
         </div>
       )}
@@ -75,7 +74,7 @@ export default async function MovieDetailPage({ params }: PageProps) {
               width={112}
               height={144}
               className="rounded-lg mx-auto object-cover"
-              loading="lazy"
+              loading="eager"
             />
             <p className="font-medium mt-1">{actor.name}</p>
             <p className="text-sm text-gray-500">as {actor.character}</p>

@@ -1,8 +1,13 @@
+"use client";
+
 import Link from "next/link";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import TopBar from "./TopBar";
+import { useState } from "react";
 
 const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <div className="flex justify-between items-center p-3 max-w-6xl mx-auto">
       {/* Logo and Title */}
@@ -15,13 +20,13 @@ const Navbar = () => {
         </Link>
       </div>
 
-      {/* Trend & Top Rated Links  */}
+      {/* Trend & Top Rated Links */}
       <div className="flex items-center">
         <TopBar />
       </div>
 
-      {/* Navigation Links */}
-      <ul className="flex gap-4 text-xl ">
+      {/* Desktop Navigation Links */}
+      <ul className="flex gap-4 text-xl items-center">
         <li className="hidden sm:block hover:text-red-500">
           <Link href={"/"}>Home</Link>
         </li>
@@ -32,18 +37,30 @@ const Navbar = () => {
           <Link href={"/about"}>About</Link>
         </li>
 
-        {/* Authentication Buttons */}
+        {/* Auth Buttons */}
         <SignedOut>
           <SignInButton mode="modal">
-            <button className=" cursor-pointer   hover:text-red-500">
+            <button className="hidden sm:block cursor-pointer hover:text-red-500">
               SignIn
             </button>
           </SignInButton>
         </SignedOut>
 
         <SignedIn>
-          <UserButton afterSignOutUrl="/" />
+          <div className="hidden sm:block">
+            <UserButton afterSignOutUrl="/" />
+          </div>
         </SignedIn>
+
+        {/* Mobile Menu Button + User Avatar */}
+        <div className="sm:hidden flex items-center gap-2">
+          <SignedIn>
+            <UserButton afterSignOutUrl="/" />
+          </SignedIn>
+          <button onClick={() => setMenuOpen(!menuOpen)} className="text-2xl">
+            {menuOpen ? "X" : "≡"}
+          </button>
+        </div>
       </ul>
     </div>
   );
