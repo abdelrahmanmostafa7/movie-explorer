@@ -176,7 +176,17 @@ middleware
 - 💤 **Lazy loading** for secondary content (trailers, cast, cardImages).
 
 ---
+## 📊 Lighthouse Score
 
+<img src="./public/lighthousScore.png" alt="Lighthouse Score: 100%" width="600"/>
+- ⚡ Performance: 99%
+- ♿ Accessibility: 100%
+- ✅ Best Practices: 93%
+- 🔍 SEO: 100%
+
+- Try to test it in Incognito window
+
+---
 ## 🚧 Future Improvements
 
 - 🔎 Integrate **Fuse.js** for enhanced client-side fuzzy search.
