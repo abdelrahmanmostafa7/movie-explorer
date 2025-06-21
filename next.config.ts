@@ -9,8 +9,21 @@ const nextConfig = {
         source: "/(.*)",
         headers: [
           {
+            key: "Content-Security-Policy",
+            value: `
+              default-src 'self';
+              script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.youtube.com https://www.gstatic.com;
+              img-src 'self' https://image.tmdb.org data:;
+              style-src 'self' 'unsafe-inline';
+              font-src 'self' fonts.googleapis.com fonts.gstatic.com;
+              frame-src https://www.youtube.com https://player.vimeo.com;
+              media-src https://www.youtube.com https://player.vimeo.com;
+              connect-src 'self' https://api.themoviedb.org;
+            `.replace(/\s{2,}/g, ' ').trim(),
+          },
+          {
             key: "X-Frame-Options",
-            value: "DENY",
+            value: "SAMEORIGIN",
           },
           {
             key: "X-Content-Type-Options",
@@ -32,11 +45,6 @@ const nextConfig = {
             key: "Permissions-Policy",
             value:
               "geolocation=(), microphone=(), camera=(), fullscreen=*, autoplay=*",
-          },
-          {
-            key: "Content-Security-Policy",
-            value:
-              "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; img-src 'self' https://image.tmdb.org data:; style-src 'self' 'unsafe-inline'; font-src 'self' fonts.googleapis.com fonts.gstatic.com;",
           },
         ],
       },

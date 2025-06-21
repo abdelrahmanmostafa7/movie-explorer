@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { ClerkProvider } from "@clerk/nextjs";
+import SearchBar from "@/components/SearchBar";
 
 
 const geistSans = Geist({
@@ -63,6 +64,7 @@ export default function RootLayout({
       <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
         <body className="antialiased bg-background text-foreground">
           <Navbar />
+          <SearchBar />
           {children}
         </body>
       </html>
