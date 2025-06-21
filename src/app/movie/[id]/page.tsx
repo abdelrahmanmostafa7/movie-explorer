@@ -1,41 +1,37 @@
+
 import React from "react";
-import axios from "axios";
-import Link from "next/link";
 import Image from "next/image";
-import { Movie, Video, CastMember, Review, SimilarMovie } from "@/types/types";
+import { fetchMovieById } from "@/lib/fetchMovieById";
+import apiClient from "@/lib/apiClient";
+import MovieCard from "@/components/Card";
+import { Video, CastMember, Review, SimilarMovie, Movie } from "@/types/types";
 
 
-const API_KEY = process.env.API_KEY;
-// عملتها هنا عشان وانا بجرب docker مطلع فيها مشكلة
 type PageProps = {
-  params: {
-    id: string;
-  };
+  params: Promise<{ id: string }>;
 };
 
 export default async function MovieDetailPage({ params }: PageProps) {
-  const movieId = params.id;
+  const resolvedParams = await params;
+  const movieId = resolvedParams.id;
 
-  const [movieRes, videosRes, creditsRes, reviewsRes, similarRes] =
+  const [movie, videosRes, creditsRes, reviewsRes, similarRes] =
     await Promise.all([
-      axios.get<Movie>(
-        `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=en-US`
-      ),
-      axios.get<{ results: Video[] }>(
-        `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${API_KEY}&language=en-US`
-      ),
-      axios.get<{ cast: CastMember[] }>(
-        `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${API_KEY}&language=en-US`
-      ),
-      axios.get<{ results: Review[] }>(
-        `https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=${API_KEY}&language=en-US`
-      ),
-      axios.get<{ results: SimilarMovie[] }>(
-        `https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=${API_KEY}&language=en-US`
-      ),
+      fetchMovieById(movieId),
+      apiClient.get<{ results: Video[] }>(`/movie/${movieId}/videos`, {
+        params: { api_key: process.env.NEXT_PUBLIC_API_KEY },
+      }),
+      apiClient.get<{ cast: CastMember[] }>(`/movie/${movieId}/credits`, {
+        params: { api_key: process.env.NEXT_PUBLIC_API_KEY },
+      }),
+      apiClient.get<{ results: Review[] }>(`/movie/${movieId}/reviews`, {
+        params: { api_key: process.env.NEXT_PUBLIC_API_KEY },
+      }),
+      apiClient.get<{ results: SimilarMovie[] }>(`/movie/${movieId}/similar`, {
+        params: { api_key: process.env.NEXT_PUBLIC_API_KEY },
+      }),
     ]);
 
-  const movie = movieRes.data;
   const trailer = videosRes.data.results.find(
     (v) => v.type === "Trailer" && v.site === "YouTube"
   );
@@ -54,9 +50,12 @@ export default async function MovieDetailPage({ params }: PageProps) {
         <div className="aspect-video w-full my-6">
           <iframe
             src={`https://www.youtube.com/embed/${trailer.key}`}
+            title="YouTube trailer"
             allow="autoplay; encrypted-media"
             allowFullScreen
             className="w-full h-full rounded-lg"
+            // loading="lazy"
+            loading="eager"
           ></iframe>
         </div>
       )}
@@ -67,11 +66,16 @@ export default async function MovieDetailPage({ params }: PageProps) {
         {cast.map((actor) => (
           <div key={actor.id} className="text-center">
             <Image
-              src={`https://image.tmdb.org/t/p/w185${actor.profile_path}`}
+              src={
+                actor.profile_path
+                  ? `https://image.tmdb.org/t/p/w185${actor.profile_path}`
+                  : "/placeholder.jpg"
+              }
               alt={actor.name}
-              width={112} // w-28 = 112px
-              height={144} // h-36 = 144px
+              width={112}
+              height={144}
               className="rounded-lg mx-auto object-cover"
+              loading="lazy"
             />
             <p className="font-medium mt-1">{actor.name}</p>
             <p className="text-sm text-gray-500">as {actor.character}</p>
@@ -94,21 +98,12 @@ export default async function MovieDetailPage({ params }: PageProps) {
 
       {/* Similar Movies */}
       <h2 className="text-2xl font-semibold mt-10 mb-4">Similar Movies</h2>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-        {similar.map((movie) => (
-          <Link href={`/movie/${movie.id}`} key={movie.id}>
-            <div className="cursor-pointer hover:scale-105 transition-transform duration-200">
-              <Image
-                src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
-                alt={movie.title}
-                width={200}
-                height={300}
-                className="rounded-lg w-full h-auto"
-              />
-              <p className="mt-2 text-center text-sm">{movie.title}</p>
-            </div>
-          </Link>
-        ))}
+      <div className="grid md:grid-cols-3 gap-4">
+        {similar
+          .filter((m) => m.poster_path || m.backdrop_path)
+          .map((movie) => (
+            <MovieCard key={movie.id} result={movie as Movie} />
+          ))}
       </div>
     </div>
   );

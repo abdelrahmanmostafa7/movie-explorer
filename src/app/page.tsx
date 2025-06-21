@@ -4,14 +4,16 @@ import Results from "@/components/Results";
 const API_KEY = process.env.API_KEY!;
 
 type Props = {
-  params: {
+  params: Promise<{
     genre: string;
-  };
+  }>;
 };
 
 export default async function Home({ params }: Props) {
+  const { genre } = await params;
+
   try {
-    const results = await fetchMovies(params.genre, API_KEY);
+    const results = await fetchMovies(genre, API_KEY);
 
     return (
       <>
@@ -19,7 +21,10 @@ export default async function Home({ params }: Props) {
           Hot New Releases: Must-See Movies & Shows for 2024–2025
         </h1>
         <p className="text-lg text-center text-gray-400 max-w-3xl mx-auto px-4 mb-8">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, repellat! Iusto, architecto ex suscipit quisquam voluptates debitis vero nulla accusantium veniam accusamus temporibus officiis rem pariatur earum repellendus non eum. 🎬✨
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi,
+          repellat! Iusto, architecto ex suscipit quisquam voluptates debitis
+          vero nulla accusantium veniam accusamus temporibus officiis rem
+          pariatur earum repellendus non eum. 🎬✨
         </p>
 
         <Results results={results} />

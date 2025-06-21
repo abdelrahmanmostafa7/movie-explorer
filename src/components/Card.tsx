@@ -37,6 +37,7 @@ export default function MovieCard({ result }: Props) {
             width={300}
             height={400}
             unoptimized
+            loading="eager"
           />
         </div>
 

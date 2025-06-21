@@ -3,18 +3,17 @@ import Results from "@/components/Results";
 import Link from "next/link";
 
 type Props = {
-  searchParams: {
+  searchParams: Promise<{
     query?: string;
     page?: string;
-  };
+  }>;
 };
 
 export default async function SearchPage({ searchParams }: Props) {
-  const query = searchParams.query || "";
-  const page = parseInt(searchParams.page || "1");
+  const { query = "", page: pageStr = "1" } = await searchParams;
+  const page = parseInt(pageStr);
   const apiKey = process.env.API_KEY!;
 
-  
   const { results, totalPages } = await fetchSearchedMovies(
     query,
     apiKey,

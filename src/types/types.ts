@@ -48,5 +48,8 @@ export type Review = {
 export type SimilarMovie = {
   id: number;
   title: string;
-  poster_path: string;
+  poster_path: string | null;
+  backdrop_path?: string | null; //some movies may not have poster
+  vote_average: number;
+  overview: string;
 };
