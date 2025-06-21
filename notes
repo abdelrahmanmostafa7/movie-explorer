@@ -6,7 +6,7 @@ Before I start Create or implement any line of code should plan and thinking abo
 - Install Tailwind CSS✔
 - Initialize Git repo✔
 - Setup environment variables✔
-- Install Axios, Zustand, Clerk✔, TMDb API, etc.
+- Install Axios, Zustand, Clerk✔, TMDb API, idb-keyval , crypto-js
 
 ## UI Implementation
 
@@ -75,15 +75,15 @@ _SearchBar_ (with autocomplete)
 
 **Favorites Page**
 
-- Show user’s favorite movie cards
-- Requires user to be authenticated
-- Favorite button should be active (different color or icon)
-- Protect the route using middleware / Clerk
+- Show user’s favorite movie cards✔
+- Requires user to be authenticated✔
+- Favorite button should be active (different color or icon)✔
+- Protect the route using middleware / Clerk✔
 
 ## State Management (Zustand)
 
-- Store favorites in Zustand
-- Sync Zustand state with localStorage/IndexedDB (encrypted)
+- Store favorites in Zustand✔
+- Sync Zustand state with localStorage/IndexedDB (encrypted)✔
 
 \*\* Steps for create FavBtn
 
@@ -97,36 +97,29 @@ _SearchBar_ (with autocomplete)
 
 ## Security
 
-- Use HTTPS headers in `next.config.js`
-- Encrypt favorites data in browser (Base64/custom logic)
-- Use Clerk JWT (stateless auth)
-- Helmet or custom headers for security
+- Use HTTPS headers in `next.config.js`✔
+- Encrypt favorites data in browser (Base64/custom logic) in secureStorage & secureIndexed & Store files✔ 
+- Use Clerk JWT (stateless auth)✔
+- Helmet or custom headers for security ✔
+Stateless JWT Auth for Horizontal Scaling (done by clark) ✔
+- Use access and refresh tokens (by clark)✔
+Store securely using HttpOnly cookies	(by clark)✔
+Refresh token rotation(by clark)✔
 
 ## Deployment & Scalability
 
 - Dockerfile + Docker Compose
-- Use Vercel or VPS with CDN (Cloudflare)
+- Use Vercel or VPS with CDN (Cloudflare) 
 - Explain scalability strategy in README
+- CDN (e.g., Cloudflare) for static assets and caching  (by vercel)
+- Load Balancing & SSR Caching (by vercel)
 
 ## SEO & Performance
-
-- Use `<Image />` for optimization
+- Use `<Image />` for optimization✔
 - Metadata: title, description, OG tags
-- Lazy load trailers and secondary content
+- Lazy load trailers and secondary content✔
 - Lighthouse score > 90
 
-**Weather API** (Optional – if time allows)
-
-## README Checklist
-
-- Project Description
-- Features
-- Tech Stack
-- How to Run Locally
-- Docker Instructions
-- Security Considerations
-- SEO, Performance
-- Live Demo + Screenshots
 
 ## Why These Tools Were Chosen
 
@@ -145,13 +138,6 @@ _SearchBar_ (with autocomplete)
   - The video tutorial is based on Axios, so it aligns with the implementation.
   - React Query is great for caching and advanced scenarios, but not needed here.
 
-**Fuse.js (Search & Filtering)**
-
-- I used Fuse.js instead of server-side filtering because:
-  - It allows fuzzy client-side search without creating a custom backend.
-  - Fast and easy to implement in the search bar.
-  - The movie dataset is relatively small, so client-side filtering is enough.
-  - Server-side filtering makes more sense for massive datasets.
 
 **Static Generation (SSG) for Home Page**
 
@@ -177,3 +163,5 @@ _SearchBar_ (with autocomplete)
   - Works well for storing non-sensitive preferences.
   - Encryption (e.g., with Base64 or CryptoJS) adds an extra security layer.
   - No need for a remote DB unless you want cross-device sync.
+
+
