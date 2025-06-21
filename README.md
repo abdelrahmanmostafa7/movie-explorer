@@ -1,7 +1,8 @@
 # 🎬 Movie Explorer App
 
 Explore trending, top-rated, and popular movies with detailed info, trailers, cast, reviews, and more. Built with modern full-stack tools and production-ready practices.
-
+# Live Demo : 
+- https://movie-explorer-smoky-pi.vercel.app/
 ---
 
 ## 📖 Overview
@@ -32,14 +33,13 @@ Movie Explorer is a full-stack movie browser app built with **Next.js 15** and p
 ## ✨ Features
 
 - 🎥 Discover trending and popular movies
-- 🔍 Search with real-time suggestions (autocomplete)
+- 🔍 Search with real-time suggestions (autocomplete) & fuzzy search
 - ❤️ Add/remove movies to your encrypted favorites
 - 🔐 Auth via Clerk with JWT + refresh tokens
 - 🎞️ Movie Details: trailer, cast, reviews, similar titles
 - 🔒 Secure encrypted local storage (IndexedDB)
-- 🚀 SEO optimized & Lighthouse score >90
+- 🚀 SEO optimized
 - 🐳 Docker-ready for deployment
-
 ---
 
 ## 🧱 Tech Stack
@@ -92,7 +92,6 @@ cd movie-explorer
 npm install
 npm run dev
 ```
-
 ---
 
 ## 📁 Folder Structure
@@ -144,8 +143,8 @@ middleware
 - 🔧 Centralized `apiClient.ts` setup for **Axios** instance with TMDb API key.
 - 📡 Fetches:
     - 📺 Trending & Popular Movies (Home)
-    - 🔍 Search with autocomplete & pagination
-    - 🎬 Movie Details (cast, trailers, reviews, similar titles)
+    - 🔍 Search with autocomplete , pagination & fuzzy
+    - 🎬 Movie Details (cast, trailers, reviews, similar movie)
 - 📑 Pagination supported using TMDb’s `page` query param.
 
 ---
@@ -174,15 +173,13 @@ middleware
 
 - 🖼️ Optimized images using Next.js `<Image />` component.
 - 📄 Dynamic SEO tags & Open Graph metadata for social sharing.
-- 💤 **Lazy loading** for secondary content (trailers, cast, reviews).
-- 🚦 Achieved **Lighthouse Score > 90** for performance & accessibility.
+- 💤 **Lazy loading** for secondary content (trailers, cast, cardImages).
 
 ---
 
 ## 🚧 Future Improvements
 
 - 🔎 Integrate **Fuse.js** for enhanced client-side fuzzy search.
-- 🔐 Enable **Social Auth** (Google, GitHub) using Clerk.
 - 💾 Add **Offline support** by caching API data with service workers.
 - 🌙 Add **Dark/Light Theme Toggle** for UI customization.
 - 🔁 Sync favorites with a backend DB for **cross-device access**.
