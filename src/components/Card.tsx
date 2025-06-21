@@ -41,7 +41,7 @@ export default function MovieCard({ result }: Props) {
           />
         </div>
 
-        <div className="p-3 space-y-2 bg-white dark:bg-gray-900">
+        <div className="p-3 space-y-2 bg-black-900">
           <h2 className="font-semibold text-md truncate">
             {result.title || result.name}
           </h2>
